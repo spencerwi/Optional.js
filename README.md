@@ -17,10 +17,23 @@ of your choice.
 How to build it
 ---------------
 
-Optiona.js uses grunt as its build tool, so if you've got grunt, just run `grunt`
+Optional.js uses grunt as its build tool, so if you've got grunt, just run `grunt`
 
 
 How to use it
 -------------
 
-Coming soon!
+Given the non-typechecked nature of Javascript, Optional.js can come in handy for 
+safely getting-or-defaulting nested properties:
+
+```javascript
+function someFunctionThatTakesAParamObject(params){
+  var color = Optional.ofNullable(params)
+                      .map(function(params){ return params.color; })
+                      .orElse("blue");
+}
+```
+
+Any [use of the Java Optional](http://www.oracle.com/technetwork/articles/java/java8-optional-2175753.html) is applicable here, as Optional.js is a matching port of the JDK8 implementation of this concept.
+
+For more in-depth examples, check [the spec file](https://github.com/spencerwi/Optional.js/blob/master/test/optional.spec.js).

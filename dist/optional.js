@@ -71,6 +71,14 @@ var Optional = (function () {
             f.apply(null, [this.value]);
         }
     };
+
+    Optional.prototype.filter = function (f) {
+        if (this.isPresent() && f(this.value) == true) {
+            return Optional.of(this.value);
+        } else {
+            return Optional.empty();
+        }
+    };
     return Optional;
 })();
 //# sourceMappingURL=optional.js.map

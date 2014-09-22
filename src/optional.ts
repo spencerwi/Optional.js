@@ -64,4 +64,12 @@ class Optional<T> {
             f.apply(null, [this.value]);
         }
     }
+
+    public filter(f: TypedFunction<T, boolean>): Optional<any> {
+        if (this.isPresent() && f(this.value) == true){
+            return Optional.of(this.value);
+        } else {
+            return Optional.empty();
+        }
+    }
 }

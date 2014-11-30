@@ -72,6 +72,19 @@ describe("Optional", function(){
             expect(sut.orElse(10)).toBe(10);
         });
     });
+    describe("#orElseGet(otherValueSupplier)", function(){
+        it("returns the wrapped value of a \"filled\" Optional", function(){
+            sut = Optional.of(5);
+
+            expect(sut.orElse(10)).toBe(5);
+        });
+        it("invokes the given function and returns its return value when called on an empty Optional", function(){
+            sut = Optional.empty();
+            var returnFive = function(){return 5;};
+
+            expect(sut.orElseGet(returnFive)).toBe(5);
+        });
+    });
     describe("#isPresent()", function(){
         it("returns true if the Optional is a real value", function(){
             sut = Optional.of(5);

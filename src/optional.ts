@@ -4,9 +4,6 @@ interface TypedFunction<T,R> extends Function {
 interface OptionalFunction<T,R> extends Function {
     (value: Optional<T>): Optional<R>;
 }
-interface Consumer<T> {
-    (value: T): void;
-}
 
 class Optional<T> {
     private value: T;   
@@ -27,30 +24,37 @@ class Optional<T> {
     }
     
     public get(): T {
-        if (this.value != null) {
+        if (this.isPresent()) {
             return this.value;  
         } else {
             throw new Error("Cannot get value of empty optional!")
         }        
     }
     public orElse(defaultValue: T): T {
-        if (this.value == null){
-            return defaultValue;
-        } else {
+        if (this.isPresent()){
             return this.value;
+        } else {
+            return defaultValue;
         }
     }
-    public map(f: TypedFunction<T, any>): Optional<any> {
-        if (this.value != null){
-            var bareValueResult: any = f.apply(null, [this.value]);
+    public orElseGet(defaultValueGetter: ()=>T): T {
+        if (this.isPresent()){
+            return this.value;
+        } else {
+            return defaultValueGetter();
+        }
+    }
+    public map(f: (T)=>any): Optional<any> {
+        if (this.isPresent()){
+            var bareValueResult: any = f(this.value);
             return Optional.ofNullable(bareValueResult);
         } else {
             return Optional.empty();
         }
     }
-    public flatMap(f: OptionalFunction<T, any>): Optional<any> {
-        if (this.value != null){
-            var wrappedResult: Optional<any> = f.apply(null, [this.value]);
+    public flatMap(f: (T)=>Optional<any>): Optional<any> {
+        if (this.isPresent()){
+            var wrappedResult: Optional<any> = f(this.value);
             return wrappedResult;
         } else {
             return Optional.empty();
@@ -59,13 +63,13 @@ class Optional<T> {
     public isPresent(): boolean {
         return (this.value != null);
     }
-    public ifPresent(f: Consumer<T>): void {
+    public ifPresent(f: (T)=>void): void {
         if (this.isPresent()){
-            f.apply(null, [this.value]);
+            f(this.value);
         }
     }
 
-    public filter(f: TypedFunction<T, boolean>): Optional<any> {
+    public filter(f: (T)=>boolean): Optional<any> {
         if (this.isPresent() && f(this.value) == true){
             return Optional.of(this.value);
         } else {

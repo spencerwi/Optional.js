@@ -20,7 +20,8 @@ var Optional = (function () {
     Optional.of = function (value) {
         if (value == null) {
             throw new Error("Cannot create Optional.of null/undefined! Try Optional.ofNullable instead.");
-        } else {
+        }
+        else {
             return Optional.ofNullable(value);
         }
     };
@@ -32,34 +33,45 @@ var Optional = (function () {
     Optional.empty = function () {
         return new Optional();
     };
-
     Optional.prototype.get = function () {
-        if (this.value != null) {
+        if (this.isPresent()) {
             return this.value;
-        } else {
+        }
+        else {
             throw new Error("Cannot get value of empty optional!");
         }
     };
     Optional.prototype.orElse = function (defaultValue) {
-        if (this.value == null) {
-            return defaultValue;
-        } else {
+        if (this.isPresent()) {
             return this.value;
+        }
+        else {
+            return defaultValue;
+        }
+    };
+    Optional.prototype.orElseGet = function (defaultValueGetter) {
+        if (this.isPresent()) {
+            return this.value;
+        }
+        else {
+            return defaultValueGetter();
         }
     };
     Optional.prototype.map = function (f) {
-        if (this.value != null) {
-            var bareValueResult = f.apply(null, [this.value]);
+        if (this.isPresent()) {
+            var bareValueResult = f(this.value);
             return Optional.ofNullable(bareValueResult);
-        } else {
+        }
+        else {
             return Optional.empty();
         }
     };
     Optional.prototype.flatMap = function (f) {
-        if (this.value != null) {
-            var wrappedResult = f.apply(null, [this.value]);
+        if (this.isPresent()) {
+            var wrappedResult = f(this.value);
             return wrappedResult;
-        } else {
+        }
+        else {
             return Optional.empty();
         }
     };
@@ -68,21 +80,20 @@ var Optional = (function () {
     };
     Optional.prototype.ifPresent = function (f) {
         if (this.isPresent()) {
-            f.apply(null, [this.value]);
+            f(this.value);
         }
     };
-
     Optional.prototype.filter = function (f) {
         if (this.isPresent() && f(this.value) == true) {
             return Optional.of(this.value);
-        } else {
+        }
+        else {
             return Optional.empty();
         }
     };
     return Optional;
 })();
 //# sourceMappingURL=optional.js.map
-
 
 return Optional;
 

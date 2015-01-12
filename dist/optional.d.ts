@@ -8,7 +8,7 @@ declare class Optional<T> {
     private value;
     static of<T>(value: T): Optional<T>;
     static ofNullable<T>(value: T): Optional<T>;
-    static empty(): Optional<void>;
+    static empty(): Optional<any>;
     get(): T;
     orElse(defaultValue: T): T;
     orElseGet(defaultValueGetter: () => T): T;

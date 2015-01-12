@@ -19,8 +19,8 @@ class Optional<T> {
         opt.value = value;
         return opt;
     }
-    public static empty(): Optional<void> {
-        return new Optional<void>();
+    public static empty(): Optional<any> {
+        return new Optional<any>();
     }
     
     public get(): T {

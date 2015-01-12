@@ -8,6 +8,9 @@ module.exports = function(grunt){
     grunt.initConfig({
         clean: ["dist"],
         ts: {
+            options: {
+                declaration: true
+            },
             build: {
                 src: ['src/optional.ts'],
                 out: 'dist/optional.js'

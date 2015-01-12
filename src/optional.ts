@@ -77,4 +77,3 @@ class Optional<T> {
         }
     }
 }
-export = Optional

@@ -1,20 +1,14 @@
-interface TypedFunction<T, R> extends Function {
-    (value: T): R;
-}
-interface OptionalFunction<T, R> extends Function {
-    (value: Optional<T>): Optional<R>;
-}
 declare class Optional<T> {
     private value;
     static of<T>(value: T): Optional<T>;
     static ofNullable<T>(value: T): Optional<T>;
-    static empty(): Optional<any>;
+    static empty(): Optional<void>;
     get(): T;
     orElse(defaultValue: T): T;
     orElseGet(defaultValueGetter: () => T): T;
-    map(f: (T: any) => any): Optional<any>;
-    flatMap(f: (T: any) => Optional<any>): Optional<any>;
+    map<T, R>(f: (T) => R): Optional<R | void>;
+    flatMap<T, R>(f: (T) => Optional<R>): Optional<R | void>;
     isPresent(): boolean;
-    ifPresent(f: (T: any) => void): void;
-    filter(f: (T: any) => boolean): Optional<any>;
+    ifPresent(f: (T) => void): void;
+    filter(f: (T) => boolean): Optional<T | void>;
 }

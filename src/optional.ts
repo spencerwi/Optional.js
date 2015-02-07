@@ -1,10 +1,3 @@
-interface TypedFunction<T,R> extends Function {
-    (value: T): R;
-}
-interface OptionalFunction<T,R> extends Function {
-    (value: Optional<T>): Optional<R>;
-}
-
 class Optional<T> {
     private value: T;   
     public static of<T>(value: T): Optional<T> {
@@ -19,8 +12,8 @@ class Optional<T> {
         opt.value = value;
         return opt;
     }
-    public static empty(): Optional<any> {
-        return new Optional<any>();
+    public static empty(): Optional<void> {
+        return new Optional<void>();
     }
     
     public get(): T {
@@ -44,17 +37,17 @@ class Optional<T> {
             return defaultValueGetter();
         }
     }
-    public map(f: (T)=>any): Optional<any> {
+    public map<T,R>(f: (T)=>R): Optional<R|void> {
         if (this.isPresent()){
-            var bareValueResult: any = f(this.value);
+            var bareValueResult: R = f(this.value);
             return Optional.ofNullable(bareValueResult);
         } else {
             return Optional.empty();
         }
     }
-    public flatMap(f: (T)=>Optional<any>): Optional<any> {
+    public flatMap<T,R>(f: (T)=>Optional<R>): Optional<R|void> {
         if (this.isPresent()){
-            var wrappedResult: Optional<any> = f(this.value);
+            var wrappedResult: Optional<R> = f(this.value);
             return wrappedResult;
         } else {
             return Optional.empty();
@@ -69,7 +62,7 @@ class Optional<T> {
         }
     }
 
-    public filter(f: (T)=>boolean): Optional<any> {
+    public filter(f: (T)=>boolean): Optional<T|void> {
         if (this.isPresent() && f(this.value) == true){
             return Optional.of(this.value);
         } else {

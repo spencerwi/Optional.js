@@ -6,14 +6,25 @@ module.exports = function(grunt){
     grunt.loadNpmTasks("grunt-contrib-jasmine");
 
     grunt.initConfig({
-        clean: ["dist"],
+        clean: {
+            before: ["dist"],
+            after: ["tmp.spec.js"]
+        },
         ts: {
-            options: {
-                declaration: true
-            },
             build: {
+                options: {
+                    declaration: true
+                },
                 src: ['src/optional.ts'],
                 out: 'dist/optional.js'
+            },
+            testDefinitionFile: {
+                options: {
+                    declaration: false,
+                    sourceMap: false
+                },
+                src: ['test/typescript-definition-file.spec.ts'],
+                out: 'tmp.spec.js'
             }
         },
         uglify: {
@@ -46,6 +57,6 @@ module.exports = function(grunt){
             }
         }
     });
-    grunt.registerTask('build', ['clean', 'ts', 'uglify', 'umd']);
-    grunt.registerTask('default', ['build', 'jasmine']);
+    grunt.registerTask('build', ['clean:before', 'ts:build', 'uglify', 'umd']);
+    grunt.registerTask('default', ['build', 'jasmine', 'ts:testDefinitionFile', 'clean:after']);
 }

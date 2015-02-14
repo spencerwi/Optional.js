@@ -1,9 +1,7 @@
 // optional.js
 // ===========
-if (typeof window === "undefined"){
-    // detect node and require() at will
-    Optional = require("./optional.js");
-}
+Optional = require("../dist/optional");
+
 describe("Optional", function(){
     var sut;
     describe(".of(value)", function(){

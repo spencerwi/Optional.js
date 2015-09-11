@@ -9,7 +9,7 @@
   "main": [
     "dist/optional.min.js",
     "dist/optional.js",
-    "dist/optional.d.ts",
+    "dist/optional.d.ts"
   ],
   "moduleType": [
     "amd",

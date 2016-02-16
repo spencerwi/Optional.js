@@ -16,7 +16,7 @@ They're UMD modules, so you should be able to use them in the loader/environment
 of your choice.
 
 If you're a Typescript dev, high-five for typesafety! You'll probably be interested in `dist/optional.d.ts`, 
-which is specified in the `typings` property of `package.json` -- so you should just be able to `import Optional from "Optional.js"`
+which is specified in the `typings` property of `package.json` -- so you should just be able to `import Optional from "optional.js"`
 
 
 How to build it

@@ -1,8 +1,8 @@
 {
-  "name": "optional.js",
+  "name": "Optional.js",
   "version": "0.3.0",
   "description": "Nullable. Optional. The Maybe monad. Whatever you want to call it, it's for Javascript now.",
-  "main": "optional.js",
+  "main": "dist/optional.js",
   "typings": "dist/optional.d.ts",
   "scripts": {
     "test": "gulp test"

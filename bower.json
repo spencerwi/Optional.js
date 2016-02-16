@@ -1,6 +1,6 @@
 {
   "name": "Optional.js",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "homepage": "https://github.com/spencerwi/Optional.js",
   "authors": [
     "Spencer Williams <spencerwi@gmail.com>"
@@ -11,6 +11,9 @@
     "dist/optional.js",
     "dist/optional.d.ts"
   ],
+  "typescript": {
+      "definition": "dist/optional.d.ts"
+  },
   "moduleType": [
     "amd",
     "globals",

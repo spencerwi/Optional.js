@@ -1,6 +1,6 @@
 // optional.js
 // ===========
-Optional = require("../dist/optional");
+Optional = require("../dist/optional").default;
 
 describe("Optional", function(){
     var sut;

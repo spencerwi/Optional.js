@@ -2,7 +2,6 @@ var gulp = require("gulp");
 var merge = require("merge2");
 
 var typescript = require("gulp-typescript");
-var umd = require("gulp-umd");
 var uglifyjs = require("gulp-uglifyjs");
 
 var jasmine = require("gulp-jasmine");
@@ -14,19 +13,12 @@ gulp.task('clean', function(cb){
     rimraf("./dist", cb);
 })
 gulp.task('build', ['clean'], function(){
-    var compiledTS = gulp.src('src/optional.ts')
-                        .pipe(typescript({
-                            declarationFiles: true
-                        }));
+    var tsProject = typescript.createProject('tsconfig.json');
+    var compiledTS = tsProject.src().pipe(typescript(tsProject));
 
     return merge([
         compiledTS.dts.pipe(gulp.dest('dist')),
         compiledTS.js.pipe(gulp.dest('dist'))
-                     .pipe(umd({
-                        exports:   function(file) { return 'Optional'; },
-                        namespace: function(file) { return 'Optional'; }
-                     }))
-                     .pipe(gulp.dest('dist'))
                      .pipe(uglifyjs("optional.min.js", {
                         preserveComments: "all"
                      }))
@@ -40,7 +32,9 @@ gulp.task('test', ['clean', 'build'], function(){
                 reporter: new jasmineReporters.TerminalReporter({verbosity: 3, color: true})
             })),
         gulp.src('test/typescript-definition-file.spec.ts')
-            .pipe(typescript())
+            .pipe(typescript({
+                module: 'commonjs'
+            }))
     ])
         
 });

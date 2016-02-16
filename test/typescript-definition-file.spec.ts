@@ -1,4 +1,4 @@
-///<reference path="../dist/optional.d.ts"/>
+import Optional from "../dist/optional";
 
 var nothing: Optional<number|void> = Optional.ofNullable(null);
 var alsoNothing: Optional<number|void> = nothing.map((x: number) => x*x);

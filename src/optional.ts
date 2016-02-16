@@ -1,4 +1,4 @@
-class Optional<T> {
+export default class Optional<T> {
     private value: T;   
     public static of<T>(value: T): Optional<T> {
         if (value == null){

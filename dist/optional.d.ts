@@ -1,4 +1,4 @@
-declare class Optional<T> {
+export default class Optional<T> {
     private value;
     static of<T>(value: T): Optional<T>;
     static ofNullable<T>(value: T): Optional<T>;

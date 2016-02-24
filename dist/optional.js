@@ -6,6 +6,7 @@
         define(["require", "exports"], factory);
     }
 })(function (require, exports) {
+    "use strict";
     var Optional = (function () {
         function Optional() {
         }
@@ -84,7 +85,7 @@
             }
         };
         return Optional;
-    })();
+    }());
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = Optional;
 });

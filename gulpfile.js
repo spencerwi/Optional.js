@@ -13,7 +13,7 @@ gulp.task('clean', function(cb){
     rimraf("./dist", cb);
 })
 gulp.task('build', ['clean'], function(){
-    var tsProject = typescript.createProject('tsconfig.json');
+    var tsProject = typescript.createProject('tsconfig.json', {typescript: require("typescript")});
     var compiledTS = tsProject.src().pipe(typescript(tsProject));
 
     return merge([

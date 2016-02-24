@@ -1,6 +1,6 @@
 {
   "name": "optional.js",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Nullable. Optional. The Maybe monad. Whatever you want to call it, it's for Javascript now.",
   "main": "dist/optional.js",
   "typings": "dist/optional.d.ts",

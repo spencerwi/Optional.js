@@ -23,6 +23,6 @@
     "merge2": "~0.3.1",
     "painless": "^0.9.1",
     "rimraf": "~2.2.8",
-    "typescript": "1.8.x"
+    "typescript": "2.0.3"
   }
 }

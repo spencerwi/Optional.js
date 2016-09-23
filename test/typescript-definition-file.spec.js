@@ -1,0 +1,15 @@
+"use strict";
+var optional_1 = require("../dist/optional");
+var nothing = optional_1["default"].ofNullable(null);
+var alsoNothing = nothing.map(function (x) { return x * x; });
+var anotherNothing = optional_1["default"].empty();
+var five = optional_1["default"].of(5);
+var ten = five.map(function (x) { return x * 2; });
+var tenAsString = ten.map(function (x) { return x.toString(); });
+var theStringTen = tenAsString.get();
+theStringTen = tenAsString.orElse("");
+theStringTen = tenAsString.orElseGet(function () { return ""; });
+var stillFive = five.flatMap(function (x) { return optional_1["default"].of(x); });
+var fiveIsPresent = stillFive.isPresent();
+five.ifPresent(function (x) { });
+var maybeFive = five.filter(function (x) { return x == 5; });

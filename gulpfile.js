@@ -9,11 +9,11 @@ var jasmineReporters = require("jasmine-reporters");
 
 var rimraf = require("rimraf");
 
+var tsProject = typescript.createProject('tsconfig.json', {typescript: require("typescript")});
 gulp.task('clean', function(cb){
     rimraf("./dist", cb);
 })
 gulp.task('build', ['clean'], function(){
-    var tsProject = typescript.createProject('tsconfig.json', {typescript: require("typescript")});
     var compiledTS = tsProject.src().pipe(typescript(tsProject));
 
     return merge([
@@ -32,9 +32,7 @@ gulp.task('test', ['clean', 'build'], function(){
                 reporter: new jasmineReporters.TerminalReporter({verbosity: 3, color: true})
             })),
         gulp.src('test/typescript-definition-file.spec.ts')
-            .pipe(typescript({
-                module: 'commonjs'
-            }))
+            .pipe(typescript(tsProject))
     ])
         
 });

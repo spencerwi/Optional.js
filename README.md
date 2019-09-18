@@ -11,18 +11,18 @@ Based specifically on [java.util.Optional](http://docs.oracle.com/javase/8/docs/
 How to get it
 -------------
 
-Grab `dist/optional.js` or `dist/optional.min.js`, whichever you prefer. 
+Grab `dist/umd/optional.js` or `dist/umd/optional.min.js`, whichever you prefer. 
 They're UMD modules, so you should be able to use them in the loader/environment
 of your choice.
 
-If you're a Typescript dev, high-five for typesafety! You'll probably be interested in `dist/optional.d.ts`, 
+If you're a Typescript dev, high-five for typesafety! You'll probably be interested in `dist/commonjs/optional.d.ts` 
 which is specified in the `typings` property of `package.json` -- so you should just be able to `import Optional from "optional.js"`
 
 
 How to build it
 ---------------
 
-Optional.js uses gulp as its build tool, so you'll want to install that. Otherwise, it's just `npm install && npm test`.
+Optional.js relies on some npm scripts. So just run `npm install && npm test`, and you're good!
 
 
 How to use it

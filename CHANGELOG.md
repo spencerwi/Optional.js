@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.1] - 2019-09-18
+### Changed
+ - Updated README appropriately and fixed Travis CI builds. Whoops!
+
 ## [0.4.0] - 2019-09-18
 ### Added
  - Multiple output formats, since Webpack and other modern loaders don't like 

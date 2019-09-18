@@ -37,7 +37,7 @@ export default class Optional<T> {
             return defaultValueGetter();
         }
     }
-    public map<T,R>(f: (T)=>R): Optional<R> {
+    public map<R>(f: (t : T)=>R): Optional<R> {
         if (this.isPresent()){
             var bareValueResult: R = f(this.value);
             return Optional.ofNullable(bareValueResult);
@@ -45,7 +45,7 @@ export default class Optional<T> {
             return Optional.empty<R>();
         }
     }
-    public flatMap<T,R>(f: (T)=>Optional<R>): Optional<R> {
+    public flatMap<R>(f: (t : T)=>Optional<R>): Optional<R> {
         if (this.isPresent()){
             var wrappedResult: Optional<R> = f(this.value);
             return wrappedResult;
@@ -56,13 +56,13 @@ export default class Optional<T> {
     public isPresent(): boolean {
         return (this.value != null);
     }
-    public ifPresent(f: (T)=>void): void {
+    public ifPresent(f: (t : T)=>void): void {
         if (this.isPresent()){
             f(this.value);
         }
     }
 
-    public filter(f: (T)=>boolean): Optional<T> {
+    public filter(f: (t : T)=>boolean): Optional<T> {
         if (this.isPresent() && f(this.value) == true){
             return Optional.of(this.value);
         } else {

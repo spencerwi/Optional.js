@@ -1,6 +1,6 @@
 {
   "name": "optional.js",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Nullable. Optional. The Maybe monad. Whatever you want to call it, it's for Javascript now.",
   "main": "dist/optional.js",
   "typings": "dist/optional.d.ts",
@@ -15,7 +15,7 @@
   "author": "Spencer Williams",
   "license": "MIT",
   "devDependencies": {
-    "gulp": "~3.8.11",
+    "gulp": "^3.8.11",
     "gulp-jasmine": "~2.0.0",
     "gulp-typescript": "2.11.0",
     "gulp-uglifyjs": "~0.6.0",

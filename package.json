@@ -1,28 +1,36 @@
 {
   "name": "optional.js",
   "version": "0.4.0",
-  "description": "Nullable. Optional. The Maybe monad. Whatever you want to call it, it's for Javascript now.",
-  "main": "dist/optional.js",
-  "typings": "dist/optional.d.ts",
-  "scripts": {
-    "test": "gulp test"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spencerwi/Optional.js.git"
   },
+  "description": "Nullable. Optional. The Maybe monad. Whatever you want to call it, it's for Javascript now.",
+  "main": "dist/commonjs/optional.js",
+  "typings": "dist/commonjs/optional.d.ts",
   "keywords": [
     "optional",
     "maybe",
     "nullable"
   ],
+  "scripts": {
+    "pretest": "tsc -p tsconfig.commonjs.json && rollup -c rollup.config.js",
+    "test-browser": "echo 'Browser test: ' && mocha-chrome browser-test.html",
+    "test-cli": "echo 'CLI test: ' && mocha test/optional.spec.js",
+    "test": "echo 'CLI test: ' && mocha test/optional.spec.js && echo 'Browser test: ' && mocha-chrome browser-test.html",
+    "posttest": "uglifyjs dist/umd/optional.js --compress -o dist/umd/optional.min.js"
+  },
   "author": "Spencer Williams",
   "license": "MIT",
   "devDependencies": {
-    "gulp": "^3.8.11",
-    "gulp-jasmine": "~2.0.0",
-    "gulp-typescript": "2.11.0",
-    "gulp-uglifyjs": "~0.6.0",
-    "jasmine-reporters": "~2.0.4",
-    "merge2": "~0.3.1",
-    "painless": "^0.9.1",
-    "rimraf": "~2.2.8",
-    "typescript": "2.0.3"
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "mocha-chrome": "^2.0.0",
+    "rollup": "^1.12.1",
+    "rollup-plugin-typescript2": "^0.21.0",
+    "sinon": "^7.4.2",
+    "sinon-chai": "^3.3.0",
+    "typescript": "^3.4.0",
+    "uglify-js": "2.x"
   }
 }

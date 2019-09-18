@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"target": "es5",
+		"noImplicitAny": false,
+		"strictNullChecks": true,
+		"removeComments": true,
+		"noLib": false,
+		"inlineSourceMap": true,
+		"inlineSources": true
+	},
+	"exclude": [
+		"node_modules"
+	],
+	"files": [ "./src/optional.ts" ]
+}

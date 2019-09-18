@@ -70,3 +70,7 @@ export default class Optional<T> {
         }
     }
 }
+
+if (!("undefined" === typeof window)) {
+    window["Optional"] = Optional;
+}

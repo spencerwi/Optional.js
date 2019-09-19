@@ -11,12 +11,13 @@ Based specifically on [java.util.Optional](http://docs.oracle.com/javase/8/docs/
 How to get it
 -------------
 
-Grab `dist/umd/optional.js` or `dist/umd/optional.min.js`, whichever you prefer. 
+In the browser, grab `dist/umd/optional.js` or `dist/umd/optional.min.js`, whichever you prefer. 
 They're UMD modules, so you should be able to use them in the loader/environment
 of your choice.
 
-If you're a Typescript dev, high-five for typesafety! You'll probably be interested in `dist/commonjs/optional.d.ts` 
-which is specified in the `typings` property of `package.json` -- so you should just be able to `import Optional from "optional.js"`
+Elsewhere, use `dist/commonjs/optional.js`. It's commonjs, and has typings specified, so if you're a Typescript dev, high-five for typesafety! 
+You'll probably be interested in `dist/commonjs/optional.d.ts` which is specified in the `typings` property of `package.json` -- 
+so you should just be able to `import Optional from "optional.js"`
 
 
 How to build it

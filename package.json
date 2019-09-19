@@ -1,6 +1,6 @@
 {
   "name": "optional.js",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/spencerwi/Optional.js.git"
@@ -16,16 +16,20 @@
   "scripts": {
     "pretest": "tsc -p tsconfig.commonjs.json && rollup -c rollup.config.js",
     "test-browser": "echo 'Browser test: ' && mocha-chrome browser-test.html",
-    "test-cli": "echo 'CLI test: ' && mocha test/optional.spec.js",
-    "test": "echo 'CLI test: ' && mocha test/optional.spec.js && echo 'Browser test: ' && mocha-chrome browser-test.html",
+    "test-cli": "echo 'CLI test: ' && mocha test/optional.spec.js && tsc -p tsconfig.test.json && mocha test/typescript-definition-file.spec.js",
+    "test": "echo 'CLI test: ' && mocha test/optional.spec.js && tsc -p tsconfig.test.json && mocha test/typescript-definition-file.spec.js && echo 'Browser test: ' && mocha-chrome browser-test.html",
     "posttest": "uglifyjs dist/umd/optional.js --compress -o dist/umd/optional.min.js"
   },
   "author": "Spencer Williams",
   "license": "MIT",
   "devDependencies": {
+    "@types/chai": "^4.2.3",
+    "@types/sinon": "^7.0.13",
+    "@types/sinon-chai": "^3.2.3",
     "chai": "^4.2.0",
     "mocha": "^6.1.4",
     "mocha-chrome": "^2.0.0",
+    "mocha-typescript": "^1.1.17",
     "rollup": "^1.12.1",
     "rollup-plugin-typescript2": "^0.21.0",
     "sinon": "^7.4.2",

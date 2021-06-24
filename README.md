@@ -1,8 +1,6 @@
 Optional.js
 ===========
 
-[![Build Status](https://travis-ci.org/spencerwi/Optional.js.svg?branch=master)](https://travis-ci.org/spencerwi/Optional.js)
-
 Nullable. Optional. The Maybe monad. Whatever you want to call it, it's for Javascript now.
 
 Based specifically on [java.util.Optional](http://docs.oracle.com/javase/8/docs/api/java/util/Optional.html).

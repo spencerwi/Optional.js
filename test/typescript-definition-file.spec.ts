@@ -1,5 +1,5 @@
 import Optional from "../dist/commonjs/optional";
-import { suite, test, slow, timeout } from "mocha-typescript";
+import { suite, test, slow, timeout } from "@testdeck/mocha";
 import chai from "chai";
 import sinon from "sinon";
 import sinonChai from "sinon-chai";

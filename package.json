@@ -1,6 +1,6 @@
 {
   "name": "optional.js",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/spencerwi/Optional.js.git"
@@ -15,26 +15,31 @@
   ],
   "scripts": {
     "pretest": "tsc -p tsconfig.commonjs.json && rollup -c rollup.config.js",
-    "test-browser": "echo 'Browser test: ' && mocha-chrome browser-test.html",
-    "test-cli": "echo 'CLI test: ' && mocha test/optional.spec.js && tsc -p tsconfig.test.json && mocha test/typescript-definition-file.spec.js",
+    "prep-test-cli": "cat test/cli_spec_header.js test/base_spec.js >test/optional.spec.cli.js",
+    "test-cli": "npm run prep-test-cli && echo 'CLI test: ' && mocha test/optional.spec.cli.js && tsc -p tsconfig.test.json && mocha test/typescript-definition-file.spec.js",
+    "prep-test-browser": "cat test/base_spec.js >test/optional.spec.browser.js",
+    "test-browser": "npm run prep-test-browser && echo 'Browser test: ' && karma start karma.config.js",
     "test": "npm run test-cli && npm run test-browser",
     "posttest": "uglifyjs dist/umd/optional.js --compress -o dist/umd/optional.min.js"
   },
   "author": "Spencer Williams",
   "license": "MIT",
   "devDependencies": {
+    "@testdeck/mocha": "^0.1.2",
     "@types/chai": "^4.2.3",
     "@types/sinon": "^7.0.13",
     "@types/sinon-chai": "^3.2.3",
-    "chai": "^4.2.0",
-    "mocha": "^6.1.4",
-    "mocha-chrome": "^2.0.0",
-    "mocha-typescript": "^1.1.17",
-    "rollup": "^1.12.1",
-    "rollup-plugin-typescript2": "^0.21.0",
-    "sinon": "^7.4.2",
-    "sinon-chai": "^3.3.0",
-    "typescript": "^3.4.0",
+    "chai": "^4.3.0",
+    "karma": "^6.3.4",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-mocha": "^2.0.1",
+    "mocha": "^9.0.0",
+    "puppeteer": "^10.0.0",
+    "rollup": "^2.52.2",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "sinon": "^11.1.1",
+    "sinon-chai": "^3.7.0",
+    "typescript": "^4.3.4",
     "uglify-js": "2.x"
   }
 }

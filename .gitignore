@@ -2,3 +2,5 @@ node_modules/
 .tscache/
 tmp.spec.js
 *.swp
+test/optional.spec.browser.js
+test/optional.spec.cli.js
